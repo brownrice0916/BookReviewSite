@@ -8,7 +8,12 @@ function BookSearch({ setSelectedBook, books, setBooks }) {
 
   const searchBooks = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_NAVER_API_URL}/v1/search/book.json`, {
+      const url =
+        'https://corsproxy.io/?' +
+        encodeURIComponent(`${process.env.REACT_APP_NAVER_API_URL}/v1/search/book.json?query=${query}&display=8`);
+
+      // const response = await axios.get(`${process.env.REACT_APP_NAVER_API_URL}/v1/search/book.json`, {
+      const response = await axios.get(url, {
         headers: {
           'X-Naver-Client-Id': process.env.REACT_APP_NAVER_CLIENT_ID,
           'X-Naver-Client-Secret': process.env.REACT_APP_NAVER_CLIENT_SECRET
