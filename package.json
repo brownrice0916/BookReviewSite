@@ -17,9 +17,11 @@
     "react-scripts": "5.0.1",
     "redux": "^5.0.1",
     "styled-components": "^6.1.8",
+    "vercel": "^33.5.0",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
+    "vercel-dev": "vercel dev",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -8,21 +8,12 @@ function BookSearch({ setSelectedBook, books, setBooks }) {
 
   const searchBooks = async () => {
     try {
-      const url =
-        'https://corsproxy.io/?' +
-        encodeURIComponent(`${process.env.REACT_APP_NAVER_API_URL}/v1/search/book.json?query=${query}&display=8`);
-
-      // const response = await axios.get(`${process.env.REACT_APP_NAVER_API_URL}/v1/search/book.json`, {
-      const response = await axios.get(url, {
-        headers: {
-          'X-Naver-Client-Id': process.env.REACT_APP_NAVER_CLIENT_ID,
-          'X-Naver-Client-Secret': process.env.REACT_APP_NAVER_CLIENT_SECRET
+      // cors 문제로 vercel serverless function에 요청해서 naver-api data 가져옴
+      const response = await axios.get(`/api/naver-api`, {
+        params: {
+          query: query,
+          display: 8 // 가져올 검색 결과의 수
         }
-        // params: {
-        //   query: query,
-        //   display: 8 // 가져올 검색 결과의 수
-        //   // 네이버 책 검색 API에 필요한 인증 헤더를 추가합니다.
-        // }
       });
 
       setBooks(response.data.items);
