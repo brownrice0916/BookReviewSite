@@ -17,12 +17,12 @@ function BookSearch({ setSelectedBook, books, setBooks }) {
         headers: {
           'X-Naver-Client-Id': process.env.REACT_APP_NAVER_CLIENT_ID,
           'X-Naver-Client-Secret': process.env.REACT_APP_NAVER_CLIENT_SECRET
-        },
-        params: {
-          query: query,
-          display: 8 // 가져올 검색 결과의 수
-          // 네이버 책 검색 API에 필요한 인증 헤더를 추가합니다.
         }
+        // params: {
+        //   query: query,
+        //   display: 8 // 가져올 검색 결과의 수
+        //   // 네이버 책 검색 API에 필요한 인증 헤더를 추가합니다.
+        // }
       });
 
       setBooks(response.data.items);
